@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.truthower.suhang.mangareader.widget.layout.CalendarViewLayout
+    <com.truthower.suhang.fragmentedtime.widget.layout.CalendarViewLayout
         android:id="@+id/calendar_cvl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></com.truthower.suhang.mangareader.widget.layout.CalendarViewLayout>
+        android:layout_height="wrap_content"></com.truthower.suhang.fragmentedtime.widget.layout.CalendarViewLayout>
 
 
     <android.support.v7.widget.RecyclerView

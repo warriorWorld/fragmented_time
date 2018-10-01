@@ -66,7 +66,7 @@
         android:layout_below="@+id/manga_info_rl"
         android:background="@color/manga_reader"></View>
 
-    <com.truthower.suhang.mangareader.widget.pulltorefresh.PullToRefreshGridView
+    <com.truthower.suhang.fragmentedtime.widget.pulltorefresh.PullToRefreshGridView
         android:id="@+id/ptf_grid_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -78,7 +78,7 @@
         android:horizontalSpacing="3dp"
         android:numColumns="5"
         android:padding="10dp"
-        android:verticalSpacing="12dp"></com.truthower.suhang.mangareader.widget.pulltorefresh.PullToRefreshGridView>
+        android:verticalSpacing="12dp"></com.truthower.suhang.fragmentedtime.widget.pulltorefresh.PullToRefreshGridView>
 
     <Button
         android:id="@+id/download_btn"

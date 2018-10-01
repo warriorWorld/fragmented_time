@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.truthower.suhang.mangareader">
+    package="com.truthower.suhang.fragmentedtime">
 
     <!-- 允许应用访问网络上的信息 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
@@ -40,7 +40,7 @@
     <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
     <application
-        android:name=".app.App"
+        android:name="com.truthower.suhang.fragmentedtime.app.App"
         android:allowBackup="true"
         android:icon="@drawable/spider_icon"
         android:label="@string/app_name"
@@ -48,7 +48,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".business.lunch.LunchActivity"
+            android:name="com.truthower.suhang.fragmentedtime.business.lunch.LunchActivity"
             android:launchMode="standard">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -56,38 +56,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".business.detail.WebMangaDetailsActivity"></activity>
-        <activity android:name=".business.detail.LocalMangaDetailsActivity"></activity>
+        <activity android:name="com.truthower.suhang.fragmentedtime.business.detail.WebMangaDetailsActivity"></activity>
+        <activity android:name="com.truthower.suhang.fragmentedtime.business.detail.LocalMangaDetailsActivity"></activity>
         <activity
-            android:name=".business.main.MainActivity"
+            android:name="com.truthower.suhang.fragmentedtime.business.main.MainActivity"
             android:launchMode="singleTask"></activity>
         <activity
-            android:name=".business.read.ReadMangaActivity"
+            android:name="com.truthower.suhang.fragmentedtime.business.read.ReadMangaActivity"
             android:launchMode="singleTask"></activity>
-        <activity android:name=".business.download.DownloadActivity"></activity>
+        <activity android:name="com.truthower.suhang.fragmentedtime.business.download.DownloadActivity"></activity>
         <activity
-            android:name=".business.user.LoginActivity"
+            android:name="com.truthower.suhang.fragmentedtime.business.user.LoginActivity"
             android:launchMode="singleTask"></activity>
         <activity
-            android:name=".business.user.RegisterActivity"
+            android:name="com.truthower.suhang.fragmentedtime.business.user.RegisterActivity"
             android:launchMode="singleTask"></activity>
-        <activity android:name=".business.user.CollectedActivity"></activity>
-        <activity android:name=".business.tag.TagManagerActivity"></activity>
-        <activity android:name=".business.tag.TagFilterActivity"></activity>
-        <activity android:name=".business.other.AboutActivity"></activity>
-        <activity android:name=".business.other.FeedbackActivity"></activity>
-        <activity android:name=".business.search.SearchActivity"></activity>
-        <activity android:name=".business.ad.AdvertisingActivity"></activity>
-        <activity android:name=".business.wordsbook.WordsBookActivity"></activity>
-        <activity android:name=".business.statistics.StatisticsActivity"></activity>
-        <activity android:name=".business.user.UserCenterActivity"></activity>
+        <activity android:name="com.truthower.suhang.fragmentedtime.business.user.CollectedActivity"></activity>
+        <activity android:name="com.truthower.suhang.fragmentedtime.business.tag.TagManagerActivity"></activity>
+        <activity android:name="com.truthower.suhang.fragmentedtime.business.tag.TagFilterActivity"></activity>
+        <activity android:name="com.truthower.suhang.fragmentedtime.business.other.AboutActivity"></activity>
+        <activity android:name="com.truthower.suhang.fragmentedtime.business.other.FeedbackActivity"></activity>
+        <activity android:name="com.truthower.suhang.fragmentedtime.business.search.SearchActivity"></activity>
+        <activity android:name="com.truthower.suhang.fragmentedtime.business.ad.AdvertisingActivity"></activity>
+        <activity android:name="com.truthower.suhang.fragmentedtime.business.wordsbook.WordsBookActivity"></activity>
+        <activity android:name="com.truthower.suhang.fragmentedtime.business.statistics.StatisticsActivity"></activity>
+        <activity android:name="com.truthower.suhang.fragmentedtime.business.user.UserCenterActivity"></activity>
         <activity
-            android:name=".business.comment.CommentActivity"
+            android:name="com.truthower.suhang.fragmentedtime.business.comment.CommentActivity"
             android:windowSoftInputMode="adjustResize"></activity>
 
         <service android:name=".business.download.DownloadService"></service>
-        <service android:name=".business.download.DownloadIntentService"></service>
-        <service android:name=".service.CopyBoardService"></service>
+        <service android:name="com.truthower.suhang.fragmentedtime.business.download.DownloadIntentService"></service>
+        <service android:name="com.truthower.suhang.fragmentedtime.service.CopyBoardService"></service>
 
         <meta-data
             android:name="UMENG_APPKEY"

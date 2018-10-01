@@ -31,12 +31,12 @@
         android:textSize="14sp"
         android:visibility="visible" />
 
-    <com.truthower.suhang.mangareader.widget.layout.StarLinearlayout
+    <com.truthower.suhang.fragmentedtime.widget.layout.StarLinearlayout
         android:id="@+id/grade_star_sll"
         android:layout_width="75dp"
         android:layout_height="16dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"></com.truthower.suhang.mangareader.widget.layout.StarLinearlayout>
+        android:layout_marginTop="5dp"></com.truthower.suhang.fragmentedtime.widget.layout.StarLinearlayout>
 
     <View
         android:layout_width="match_parent"

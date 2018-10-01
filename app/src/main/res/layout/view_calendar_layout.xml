@@ -168,10 +168,10 @@
             android:layout_height="8dp"
             android:background="@color/white"></View>
 
-        <com.truthower.suhang.mangareader.widget.layout.CalendarView
+        <com.truthower.suhang.fragmentedtime.widget.layout.CalendarView
             android:id="@+id/calendar_cv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="11dp"></com.truthower.suhang.mangareader.widget.layout.CalendarView>
+            android:layout_marginBottom="11dp"></com.truthower.suhang.fragmentedtime.widget.layout.CalendarView>
     </LinearLayout>
 </RelativeLayout>

@@ -30,12 +30,12 @@
             android:textColor="@color/manga_reader"
             android:textSize="15sp" />
 
-        <com.truthower.suhang.mangareader.widget.layout.StarLinearlayout
+        <com.truthower.suhang.fragmentedtime.widget.layout.StarLinearlayout
             android:id="@+id/grade_star_sll"
             android:layout_width="75dp"
             android:layout_height="16dp"
             android:layout_below="@+id/manga_name_tv"
-            android:layout_marginTop="8dp"></com.truthower.suhang.mangareader.widget.layout.StarLinearlayout>
+            android:layout_marginTop="8dp"></com.truthower.suhang.fragmentedtime.widget.layout.StarLinearlayout>
 
         <TextView
             android:id="@+id/grade_date_tv"

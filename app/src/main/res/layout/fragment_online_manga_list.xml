@@ -5,20 +5,20 @@
     android:background="@color/divide">
 
 
-    <com.truthower.suhang.mangareader.widget.pulltorefresh.PullToRefreshListView
+    <com.truthower.suhang.fragmentedtime.widget.pulltorefresh.PullToRefreshListView
         android:id="@+id/home_ptf"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/gradient_bar"></com.truthower.suhang.mangareader.widget.pulltorefresh.PullToRefreshListView>
+        android:layout_below="@+id/gradient_bar"></com.truthower.suhang.fragmentedtime.widget.pulltorefresh.PullToRefreshListView>
 
-    <com.truthower.suhang.mangareader.widget.bar.TopBar
+    <com.truthower.suhang.fragmentedtime.widget.bar.TopBar
         android:id="@+id/gradient_bar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/manga_reader"
         app:left_text=""
         app:right_background="@drawable/more"
-        app:title_text="漫画"></com.truthower.suhang.mangareader.widget.bar.TopBar>
+        app:title_text="漫画"></com.truthower.suhang.fragmentedtime.widget.bar.TopBar>
 
 
     <TextView

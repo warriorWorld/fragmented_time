@@ -29,10 +29,10 @@
         android:layout_below="@+id/btn"
         android:orientation="horizontal">
 
-        <com.truthower.suhang.mangareader.widget.wheelview.WheelView
+        <com.truthower.suhang.fragmentedtime.widget.wheelview.WheelView
             android:id="@+id/id_selector"
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"></com.truthower.suhang.mangareader.widget.wheelview.WheelView>
+            android:layout_height="match_parent"></com.truthower.suhang.fragmentedtime.widget.wheelview.WheelView>
     </LinearLayout>
 
 </RelativeLayout>

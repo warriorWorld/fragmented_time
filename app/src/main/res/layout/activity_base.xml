@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
 
-    <com.truthower.suhang.mangareader.widget.bar.TopBar
+    <com.truthower.suhang.fragmentedtime.widget.bar.TopBar
         android:id="@+id/base_topbar"
         android:layout_width="match_parent"
         android:layout_height="47dp"

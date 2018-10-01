@@ -336,7 +336,7 @@
             android:layout_marginBottom="14dp">
 
 
-            <com.truthower.suhang.mangareader.widget.imageview.CircleImage
+            <com.truthower.suhang.fragmentedtime.widget.imageview.CircleImage
                 android:id="@+id/user_head_civ"
                 android:layout_width="52dp"
                 android:layout_height="match_parent"

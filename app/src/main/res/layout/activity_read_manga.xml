@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.truthower.suhang.mangareader.widget.bar.TopBar
+        <com.truthower.suhang.fragmentedtime.widget.bar.TopBar
             android:id="@+id/read_manga_top_bar"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -20,9 +20,9 @@
             app:right_background="@drawable/search_word"
             app:title_textColor="#ffffff">
 
-        </com.truthower.suhang.mangareader.widget.bar.TopBar>
+        </com.truthower.suhang.fragmentedtime.widget.bar.TopBar>
 
-        <com.truthower.suhang.mangareader.business.read.HackyViewPager
+        <com.truthower.suhang.fragmentedtime.business.read.HackyViewPager
             android:id="@+id/manga_viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -30,7 +30,7 @@
             android:layout_centerInParent="true"
             android:clipToPadding="false">
 
-        </com.truthower.suhang.mangareader.business.read.HackyViewPager>
+        </com.truthower.suhang.fragmentedtime.business.read.HackyViewPager>
 
 
         <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
@@ -85,7 +85,7 @@
             android:visibility="gone"/>
     </RelativeLayout>
 
-    <com.truthower.suhang.mangareader.widget.shotview.ShotView
+    <com.truthower.suhang.fragmentedtime.widget.shotview.ShotView
         android:id="@+id/shot_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

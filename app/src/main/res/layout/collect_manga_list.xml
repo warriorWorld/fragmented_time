@@ -11,10 +11,10 @@
         android:layout_below="@+id/gradient_bar"
         android:background="@color/divide">
 
-        <com.truthower.suhang.mangareader.widget.swipetoloadlayout.RefreshHeaderLayout
+        <com.truthower.suhang.fragmentedtime.widget.swipetoloadlayout.RefreshHeaderLayout
             android:id="@+id/swipe_refresh_header"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></com.truthower.suhang.mangareader.widget.swipetoloadlayout.RefreshHeaderLayout>
+            android:layout_height="wrap_content"></com.truthower.suhang.fragmentedtime.widget.swipetoloadlayout.RefreshHeaderLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/swipe_target"
@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:layout_margin="3dp"></android.support.v7.widget.RecyclerView>
 
-        <com.truthower.suhang.mangareader.widget.swipetoloadlayout.LoadMoreFooterView
+        <com.truthower.suhang.fragmentedtime.widget.swipetoloadlayout.LoadMoreFooterView
             android:id="@id/swipe_load_more_footer"
             android:layout_width="match_parent"
             android:layout_height="100dp"
@@ -49,12 +49,12 @@
         android:textColor="@color/main_text_color"
         android:textSize="12sp" />
 
-    <com.truthower.suhang.mangareader.widget.bar.TopBar
+    <com.truthower.suhang.fragmentedtime.widget.bar.TopBar
         android:id="@+id/gradient_bar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/manga_reader"
         app:left_text=""
         app:right_text=""
-        app:title_text="本地"></com.truthower.suhang.mangareader.widget.bar.TopBar>
+        app:title_text="本地"></com.truthower.suhang.fragmentedtime.widget.bar.TopBar>
 </RelativeLayout>

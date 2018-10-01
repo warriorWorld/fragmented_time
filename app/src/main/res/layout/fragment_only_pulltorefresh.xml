@@ -4,10 +4,10 @@
     android:layout_height="fill_parent">
 
 
-    <com.truthower.suhang.mangareader.widget.pulltorefresh.PullToRefreshListView
+    <com.truthower.suhang.fragmentedtime.widget.pulltorefresh.PullToRefreshListView
         android:id="@+id/pull_to_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.truthower.suhang.mangareader.widget.pulltorefresh.PullToRefreshListView>
+        android:layout_height="match_parent"></com.truthower.suhang.fragmentedtime.widget.pulltorefresh.PullToRefreshListView>
 
     <include
         android:id="@+id/empty_view"

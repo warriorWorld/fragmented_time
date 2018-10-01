@@ -115,7 +115,7 @@
         android:layout_below="@+id/manga_info"
         android:background="@color/manga_reader"></View>
 
-    <com.truthower.suhang.mangareader.widget.pulltorefresh.PullToRefreshGridView
+    <com.truthower.suhang.fragmentedtime.widget.pulltorefresh.PullToRefreshGridView
         android:id="@+id/ptf_grid_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -127,7 +127,7 @@
         android:horizontalSpacing="3dp"
         android:numColumns="5"
         android:padding="10dp"
-        android:verticalSpacing="12dp"></com.truthower.suhang.mangareader.widget.pulltorefresh.PullToRefreshGridView>
+        android:verticalSpacing="12dp"></com.truthower.suhang.fragmentedtime.widget.pulltorefresh.PullToRefreshGridView>
 
 
     <RelativeLayout
@@ -143,12 +143,12 @@
             android:background="@color/manga_reader"></View>
 
 
-        <com.truthower.suhang.mangareader.widget.layout.StarLinearlayout
+        <com.truthower.suhang.fragmentedtime.widget.layout.StarLinearlayout
             android:id="@+id/grade_star_sll"
             android:layout_width="75dp"
             android:layout_height="16dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"></com.truthower.suhang.mangareader.widget.layout.StarLinearlayout>
+            android:layout_marginLeft="15dp"></com.truthower.suhang.fragmentedtime.widget.layout.StarLinearlayout>
 
         <RelativeLayout
             android:id="@+id/grade_rl"

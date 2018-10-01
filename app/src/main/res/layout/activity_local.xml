@@ -7,22 +7,22 @@
     android:background="@color/divide">
 
 
-    <com.truthower.suhang.mangareader.widget.pulltorefresh.PullToRefreshGridView
+    <com.truthower.suhang.fragmentedtime.widget.pulltorefresh.PullToRefreshGridView
         android:id="@+id/ptf_local_grid_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/gradient_bar"
         android:layout_marginTop="7dp"
-        android:padding="10dp"></com.truthower.suhang.mangareader.widget.pulltorefresh.PullToRefreshGridView>
+        android:padding="10dp"></com.truthower.suhang.fragmentedtime.widget.pulltorefresh.PullToRefreshGridView>
 
-    <com.truthower.suhang.mangareader.widget.bar.TopBar
+    <com.truthower.suhang.fragmentedtime.widget.bar.TopBar
         android:id="@+id/gradient_bar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/manga_reader"
         app:left_text=""
         app:right_text=""
-        app:title_text="本地"></com.truthower.suhang.mangareader.widget.bar.TopBar>
+        app:title_text="本地"></com.truthower.suhang.fragmentedtime.widget.bar.TopBar>
 
     <include
         android:id="@+id/empty_view"
