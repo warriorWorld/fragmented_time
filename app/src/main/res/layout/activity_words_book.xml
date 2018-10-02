@@ -9,7 +9,7 @@
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:background="@color/manga_reader">
+        android:background="@color/fragmented_time">
 
         <TextView
             android:id="@+id/top_bar_left"

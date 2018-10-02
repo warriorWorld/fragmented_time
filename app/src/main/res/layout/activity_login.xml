@@ -80,7 +80,7 @@
             android:layout_below="@+id/login_btn"
             android:layout_marginTop="15dp"
             android:text="忘记密码?"
-            android:textColor="@color/manga_reader" />
+            android:textColor="@color/fragmented_time" />
     </RelativeLayout>
 
     <TextView
@@ -91,7 +91,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="39dp"
         android:text="立即注册  >"
-        android:textColor="@color/manga_reader" />
+        android:textColor="@color/fragmented_time" />
 
     <RelativeLayout
         android:id="@+id/user_psd_rl"

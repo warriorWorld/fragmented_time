@@ -54,7 +54,9 @@ public class LunchActivity extends BaseActivity implements View.OnClickListener,
         super.onResume();
     }
 
-    private void initUI() {
+    @Override
+    protected void initUI() {
+        super.initUI();
         hideBaseTopBar();
     }
 

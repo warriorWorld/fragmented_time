@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="下载中..."
-                android:textColor="@color/manga_reader"
+                android:textColor="@color/fragmented_time"
                 android:textSize="12sp"
                 android:visibility="gone" />
         </LinearLayout>
@@ -113,7 +113,7 @@
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:layout_below="@+id/manga_info"
-        android:background="@color/manga_reader"></View>
+        android:background="@color/fragmented_time"></View>
 
     <com.truthower.suhang.fragmentedtime.widget.pulltorefresh.PullToRefreshGridView
         android:id="@+id/ptf_grid_view"
@@ -140,7 +140,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:background="@color/manga_reader"></View>
+            android:background="@color/fragmented_time"></View>
 
 
         <com.truthower.suhang.fragmentedtime.widget.layout.StarLinearlayout
@@ -173,7 +173,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/grade_ll"
                 android:text="0.00"
-                android:textColor="@color/manga_reader"
+                android:textColor="@color/fragmented_time"
                 android:textSize="@dimen/main_text_size" />
 
             <TextView

@@ -15,7 +15,7 @@
         android:id="@+id/gradient_bar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/manga_reader"
+        android:background="@color/fragmented_time"
         app:left_text=""
         app:right_background="@drawable/more"
         app:title_text="漫画"></com.truthower.suhang.fragmentedtime.widget.bar.TopBar>

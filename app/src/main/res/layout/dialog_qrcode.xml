@@ -43,6 +43,6 @@
         android:layout_height="50dp"
         android:gravity="center"
         android:text="下载二维码"
-        android:textColor="@color/manga_reader"
+        android:textColor="@color/fragmented_time"
         android:textSize="17sp" />
 </LinearLayout>

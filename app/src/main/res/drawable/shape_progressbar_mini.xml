@@ -29,8 +29,8 @@
                 <gradient
                     android:angle="0"
                     android:centerY="0.75"
-                    android:endColor="@color/manga_reader_deep"
-                    android:startColor="@color/manga_reader"></gradient>
+                    android:endColor="@color/fragmented_time_deep"
+                    android:startColor="@color/fragmented_time"></gradient>
             </shape>
         </clip>
     </item>

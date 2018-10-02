@@ -19,7 +19,7 @@
             android:layout_alignParentRight="true"
             android:gravity="center"
             android:text="确认"
-            android:textColor="@color/manga_reader"
+            android:textColor="@color/fragmented_time"
             android:textSize="17sp" />
     </RelativeLayout>
 

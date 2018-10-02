@@ -51,7 +51,7 @@ public class EasyToast extends Toast {
             //只有标题时,标题是白色的
             titleTv.setTextColor(context.getResources().getColor(R.color.white));
         } else {
-            titleTv.setTextColor(context.getResources().getColor(R.color.manga_reader));
+            titleTv.setTextColor(context.getResources().getColor(R.color.fragmented_time));
         }
         if (!TextUtils.isEmpty(title)) {
             titleTv.setVisibility(View.VISIBLE);

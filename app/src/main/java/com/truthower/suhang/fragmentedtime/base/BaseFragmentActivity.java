@@ -15,13 +15,10 @@ import android.view.WindowManager;
 
 import com.truthower.suhang.fragmentedtime.R;
 import com.truthower.suhang.fragmentedtime.eventbus.EventBusEvent;
-import com.truthower.suhang.fragmentedtime.service.CopyBoardService;
 import com.truthower.suhang.fragmentedtime.utils.ActivityPoor;
-import com.truthower.suhang.fragmentedtime.utils.ServiceUtil;
 import com.truthower.suhang.fragmentedtime.widget.bar.TopBar;
 import com.truthower.suhang.fragmentedtime.widget.dialog.MangaDialog;
 import com.truthower.suhang.fragmentedtime.widget.toast.EasyToast;
-import com.umeng.analytics.MobclickAgent;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -47,16 +44,13 @@ public abstract class BaseFragmentActivity extends FragmentActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             //需要设置这个 flag 才能调用 setStatusBarColor 来设置状态栏颜色
             this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);//此FLAG可使状态栏透明，且当前视图在绘制时，从屏幕顶端开始即top = 0开始绘制，这也是实现沉浸效果的基础
-            this.getWindow().setStatusBarColor(getResources().getColor(R.color.manga_reader));
+            this.getWindow().setStatusBarColor(getResources().getColor(R.color.fragmented_time));
         }
         initUI();
         baseToast = new EasyToast(this);
         // 在oncreate里订阅
         EventBus.getDefault().register(this);
         ActivityPoor.addActivity(this);
-
-//        PushAgent.getInstance(this).onAppStart();
-        MobclickAgent.onEvent(this, getLocalClassName().toString());
     }
 
     private void initUI() {
@@ -147,18 +141,11 @@ public abstract class BaseFragmentActivity extends FragmentActivity {
     @Override
     public void onResume() {
         super.onResume();
-        MobclickAgent.onResume(this);
-        if (!ServiceUtil.isServiceWork(this,
-                "com.truthower.suhang.mangareader.service.CopyBoardService")) {
-            Intent intent = new Intent(this, CopyBoardService.class);
-            startService(intent);
-        }
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        MobclickAgent.onPause(this);
     }
 
     @Override

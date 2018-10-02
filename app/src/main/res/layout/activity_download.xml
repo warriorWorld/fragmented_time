@@ -64,7 +64,7 @@
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:layout_below="@+id/manga_info_rl"
-        android:background="@color/manga_reader"></View>
+        android:background="@color/fragmented_time"></View>
 
     <com.truthower.suhang.fragmentedtime.widget.pulltorefresh.PullToRefreshGridView
         android:id="@+id/ptf_grid_view"

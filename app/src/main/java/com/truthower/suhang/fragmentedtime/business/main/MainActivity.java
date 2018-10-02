@@ -1,135 +1,77 @@
 package com.truthower.suhang.fragmentedtime.business.main;
 
-import android.Manifest;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
-import android.text.TextUtils;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVFile;
-import com.avos.avoscloud.AVObject;
-import com.avos.avoscloud.AVQuery;
-import com.avos.avoscloud.FindCallback;
-import com.avos.avoscloud.GetDataCallback;
-import com.avos.avoscloud.ProgressCallback;
 import com.truthower.suhang.fragmentedtime.R;
+import com.truthower.suhang.fragmentedtime.base.BaseActivity;
 import com.truthower.suhang.fragmentedtime.base.BaseFragment;
-import com.truthower.suhang.fragmentedtime.base.BaseFragmentActivity;
-import com.truthower.suhang.fragmentedtime.config.Configure;
-import com.truthower.suhang.fragmentedtime.config.ShareKeys;
-import com.truthower.suhang.fragmentedtime.eventbus.EventBusEvent;
-import com.truthower.suhang.fragmentedtime.eventbus.JumpEvent;
-import com.truthower.suhang.fragmentedtime.eventbus.TagClickEvent;
-import com.truthower.suhang.fragmentedtime.listener.OnShareAppClickListener;
-import com.truthower.suhang.fragmentedtime.spider.FileSpider;
-import com.truthower.suhang.fragmentedtime.utils.LeanCloundUtil;
-import com.truthower.suhang.fragmentedtime.utils.SharedPreferencesUtils;
-import com.truthower.suhang.fragmentedtime.widget.dialog.MangaDialog;
-import com.truthower.suhang.fragmentedtime.widget.dialog.QrDialog;
+import com.truthower.suhang.fragmentedtime.utils.ActivityPoor;
+import com.truthower.suhang.fragmentedtime.utils.DisplayUtil;
+import com.truthower.suhang.fragmentedtime.widget.viewgroup.MainNavigationView;
 
-import org.greenrobot.eventbus.Subscribe;
-
-import java.io.File;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-
-import pub.devrel.easypermissions.AfterPermissionGranted;
-import pub.devrel.easypermissions.EasyPermissions;
-
-
-public class MainActivity extends BaseFragmentActivity implements View.OnClickListener,
-        EasyPermissions.PermissionCallbacks {
-    private LinearLayout mTabOnlinePageLL, mTabLocalLL, mTabUserLL, mTabRecommendLL;
-    /**
-     * Tab显示内容TextView
-     */
-    private TextView mTabOnlinePageTv, mTabLocalTv, mTabUserTv, mTabRecommendTv;
-    private ImageView mTabOnlinePageIv, mTabLocalIv, mTabUserIv;
-    /**
-     * Fragment
-     */
-    private OnlineMangaFragment onlinePageFg;
-    private LocalMangaFragment localFg;
-    private UserFragment userFg;
-    private RecommendFragment mRecommendFragment;
-    /**
-     * 当前选中页
-     */
-    private BaseFragment curFragment;
-
-    private MangaDialog logoutDialog;
-    private AVFile downloadFile;
-    private String versionName;
-    private String qrFilePaht;
+public class MainActivity extends BaseActivity implements View.OnClickListener {
+    private BaseFragment mFragment, mFragment1;
+    private DrawerLayout drawer;
+    private MainNavigationView navigationView;
+    private View appBarMain;
+    private TabLayout tabLayout;
+    private ViewPager vp;
+    private MyFragmentPagerAdapter adapter;
+    private int navWidth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mFragment = new BaseFragment();
+        mFragment1 = new BaseFragment();
+        navWidth = DisplayUtil.dip2px(this, 218);
         super.onCreate(savedInstanceState);
-        //状态栏透明
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-//                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        hideBaseTopBar();
-        initUI();
-        initFragment();
-        doGetVersionInfo();
-        doGetAnnouncement();
     }
-
-    private void doGetAnnouncement() {
-        AVQuery<AVObject> query = new AVQuery<>("Announcement");
-        query.findInBackground(new FindCallback<AVObject>() {
-            @Override
-            public void done(List<AVObject> list, AVException e) {
-                if (LeanCloundUtil.handleLeanResult(MainActivity.this, e)) {
-                    if (null != list && list.size() > 0) {
-                        String title = list.get(0).getString("title");
-                        String message = list.get(0).getString("message");
-                        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-                        String date = df.format(new Date());
-                        if (!date.equals(SharedPreferencesUtils.getSharedPreferencesData(
-                                MainActivity.this, ShareKeys.ANNOUNCEMENT_READ_KEY))) {
-                            showAnnouncementDialog(title, message);
-                        }
-                    }
-                }
-            }
-        });
-    }
-
 
     @Override
-    public void onResume() {
-        super.onResume();
-        if (null != curFragment) {
-            curFragment.onHiddenChanged(false);
-        }
-    }
+    protected void initUI() {
+        super.initUI();
+        appBarMain = findViewById(R.id.app_bar_main);
+        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        vp = (ViewPager) findViewById(R.id.view_pager);
+        vp.setAdapter(adapter = new MyFragmentPagerAdapter(this.getSupportFragmentManager()));
+        vp.setOffscreenPageLimit(1);
+        tabLayout.setupWithViewPager(vp);
 
 
-    private void initUI() {
-        mTabLocalTv = (TextView) this.findViewById(R.id.local_bottom_tv);
-        mTabOnlinePageTv = (TextView) this.findViewById(R.id.online_bottom_tv);
-        mTabUserTv = (TextView) this.findViewById(R.id.user_bottom_tv);
-        mTabRecommendTv = (TextView) this.findViewById(R.id.recommend_bottom_tv);
-        mTabOnlinePageIv = (ImageView) findViewById(R.id.online_bottom_iv);
-        mTabLocalIv = (ImageView) findViewById(R.id.local_bottom_iv);
-        mTabUserIv = (ImageView) findViewById(R.id.user_bottom_iv);
-        mTabOnlinePageLL = (LinearLayout) findViewById(R.id.online_bottom_ll);
-        mTabLocalLL = (LinearLayout) findViewById(R.id.local_bottom_ll);
-        mTabUserLL = (LinearLayout) findViewById(R.id.user_bottom_ll);
-        mTabRecommendLL = (LinearLayout) findViewById(R.id.recommend_bottom_ll);
+        navigationView = (MainNavigationView) findViewById(R.id.nav_view);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.setDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                //slideOffset是个从0-1的值
+                appBarMain.setTranslationX(slideOffset * navWidth);
+            }
 
+            @Override
+            public void onDrawerOpened(View drawerView) {
 
-        mTabOnlinePageLL.setOnClickListener(this);
-        mTabLocalLL.setOnClickListener(this);
-        mTabUserLL.setOnClickListener(this);
-        mTabRecommendLL.setOnClickListener(this);
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+
+            }
+        });
+
+        hideBaseTopBar();
     }
 
     @Override
@@ -137,262 +79,67 @@ public class MainActivity extends BaseFragmentActivity implements View.OnClickLi
         return R.layout.activity_main;
     }
 
-    private void doGetVersionInfo() {
-        AVQuery<AVObject> query = new AVQuery<>("VersionInfo");
-        query.findInBackground(new FindCallback<AVObject>() {
-            @Override
-            public void done(List<AVObject> list, AVException e) {
-                if (LeanCloundUtil.handleLeanResult(MainActivity.this, e)) {
-                    if (null != list && list.size() > 0) {
-                        versionName = list.get(0).getString("versionName");
-                        downloadFile = list.get(0).getAVFile("QRcode");
-                        if (null != downloadFile) {
-                            doDownloadQRcode();
-                        }
-                    }
-                }
-            }
-        });
-    }
-
-    @AfterPermissionGranted(Configure.PERMISSION_FILE_REQUST_CODE)
-    private void doDownloadQRcode() {
-        String[] perms = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
-        if (EasyPermissions.hasPermissions(this, perms)) {
-            // Already have permission, do the thing
-            // ...
-            final String folderPath = Configure.DOWNLOAD_PATH;
-            final File file = new File(folderPath);
-            if (!file.exists()) {
-                file.mkdirs();
-            }
-            final String qrFileName = "QR" + versionName + ".png";
-            qrFilePaht = Configure.DOWNLOAD_PATH + "/" + qrFileName;
-            final File qrFile = new File(qrFilePaht);
-            if (qrFile.exists()) {
-                //有就不下了
-                return;
-            }
-            downloadFile.getDataInBackground(new GetDataCallback() {
-                @Override
-                public void done(byte[] bytes, AVException e) {
-                    // bytes 就是文件的数据流
-                    if (LeanCloundUtil.handleLeanResult(MainActivity.this, e)) {
-                        File apkFile = FileSpider.getInstance().byte2File(bytes, folderPath, qrFileName);
-                    }
-                }
-            }, new ProgressCallback() {
-                @Override
-                public void done(Integer integer) {
-                    // 下载进度数据，integer 介于 0 和 100。
-                }
-            });
-
-        } else {
-            // Do not have permissions, request them now
-            EasyPermissions.requestPermissions(this, "我们需要写入/读取权限",
-                    Configure.PERMISSION_FILE_REQUST_CODE, perms);
-        }
-    }
-
-    private void showQrDialog() {
-        QrDialog qrDialog = new QrDialog(this);
-        qrDialog.show();
-        qrDialog.setImg("file://" + qrFilePaht);
-    }
-
-    private void initFragment() {
-        localFg = new LocalMangaFragment();
-        userFg = new UserFragment();
-        userFg.setOnShareAppClickListener(new OnShareAppClickListener() {
-            @Override
-            public void onClick() {
-                showQrDialog();
-            }
-        });
-        onlinePageFg = new OnlineMangaFragment();
-        mRecommendFragment = new RecommendFragment();
-
-        switchContent(null, onlinePageFg);
-    }
-
-    /**
-     * 在主线程中执行,eventbus遍历所有方法,就为了找到该方法并执行.传值自己随意写
-     *
-     * @param event
-     */
-    @Subscribe
-    public void onEventMainThread(JumpEvent event) {
-        if (null == event)
-            return;
-        if (event.getEventType() == EventBusEvent.JUMP_EVENT) {
-            switch (event.getJumpPoint()) {
-                case 0:
-                    switchContent(curFragment, onlinePageFg);
-                    toggleBottomBar(mTabOnlinePageLL);
-                    break;
-                case 1:
-                    switchContent(curFragment, mRecommendFragment);
-                    toggleBottomBar(mTabRecommendLL);
-                    break;
-                case 2:
-                    switchContent(curFragment, localFg);
-                    toggleBottomBar(mTabLocalLL);
-                    break;
-                case 3:
-                    switchContent(curFragment, userFg);
-                    toggleBottomBar(mTabUserLL);
-                    break;
-            }
-        }
-    }
-
-    @Subscribe
-    public void onEventMainThread(TagClickEvent event) {
-        if (null == event)
-            return;
-        if (event.getEventType() == EventBusEvent.TAG_CLICK_EVENT) {
-            if (TextUtils.isEmpty(event.getSelectCode())) {
-                onlinePageFg.toggleTag(event.getSelectTag());
-            } else {
-                onlinePageFg.toggleTag(event.getSelectTag(), event.getSelectCode());
-            }
-        }
-    }
-
-    public void switchContent(BaseFragment from, BaseFragment to) {
-        if (curFragment != to) {
-            curFragment = to;
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            if (!to.isAdded()) { // 先判断是否被add过
-                if (null != from) {
-                    transaction.hide(from);
-                }
-                transaction.add(R.id.container, to, to.getFragmentTag())
-                        .addToBackStack(to.getTag()).commitAllowingStateLoss(); // 隐藏当前的fragment，add下一个到Activity中
-            } else {
-                if (null != from) {
-                    transaction.hide(from);
-                }
-                transaction.show(to).commitAllowingStateLoss(); // 隐藏当前的fragment，显示下一个
-            }
-            to.onHiddenChanged(false);
-        }
-    }
+    private long mExitTime;
 
     @Override
     public void onBackPressed() {
-        showLogoutDialog();
-    }
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            if ((System.currentTimeMillis() - mExitTime) > 2000) {
 
+                Toast.makeText(this, "再按一次退出" + getResources().getString(R.string.app_name), Toast.LENGTH_SHORT).show();
+                mExitTime = System.currentTimeMillis();
 
-    private void showLogoutDialog() {
-        if (null == logoutDialog) {
-            logoutDialog = new MangaDialog(MainActivity.this);
-            logoutDialog.setOnPeanutDialogClickListener(new MangaDialog.OnPeanutDialogClickListener() {
-                @Override
-                public void onOkClick() {
-                    MainActivity.this.finish();
-                }
-
-                @Override
-                public void onCancelClick() {
-
-                }
-            });
-        }
-        logoutDialog.show();
-
-        logoutDialog.setTitle("确定退出?");
-        logoutDialog.setOkText("退出");
-        logoutDialog.setCancelText("再逛逛");
-        logoutDialog.setCancelable(true);
-    }
-
-    private void showAnnouncementDialog(String title, String msg) {
-        MangaDialog dialog = new MangaDialog(this);
-        dialog.setOnPeanutDialogClickListener(new MangaDialog.OnPeanutDialogClickListener() {
-            @Override
-            public void onOkClick() {
-                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-                String date = df.format(new Date());
-                SharedPreferencesUtils.setSharedPreferencesData
-                        (MainActivity.this, ShareKeys.ANNOUNCEMENT_READ_KEY, date);
+            } else {
+                ActivityPoor.finishAllActivity();
+                System.exit(0);
             }
-
-            @Override
-            public void onCancelClick() {
-
-            }
-        });
-        if (MainActivity.this.isFinishing()) {
-            return;
-        }
-        dialog.show();
-        dialog.setCancelable(false);
-        dialog.setTitle(title);
-        dialog.setMessage(msg);
-        dialog.setOkText("知道了");
-    }
-
-    private void toggleBottomBar(View v) {
-        mTabOnlinePageTv.setTextColor(getResources().getColor(R.color.main_text_color_gray));
-        mTabLocalTv.setTextColor(getResources().getColor(R.color.main_text_color_gray));
-        mTabUserTv.setTextColor(getResources().getColor(R.color.main_text_color_gray));
-        mTabRecommendTv.setTextColor(getResources().getColor(R.color.main_text_color_gray));
-        switch (v.getId()) {
-            case R.id.online_bottom_ll:
-                mTabOnlinePageTv.setTextColor(getResources().getColor(R.color.manga_reader));
-                break;
-            case R.id.local_bottom_ll:
-                mTabLocalTv.setTextColor(getResources().getColor(R.color.manga_reader));
-                break;
-            case R.id.user_bottom_ll:
-                mTabUserTv.setTextColor(getResources().getColor(R.color.manga_reader));
-                break;
-            case R.id.recommend_bottom_ll:
-                mTabRecommendTv.setTextColor(getResources().getColor(R.color.manga_reader));
-                break;
         }
     }
 
     @Override
     public void onClick(View v) {
-        toggleBottomBar(v);
-        switch (v.getId()) {
-            case R.id.online_bottom_ll:
-                switchContent(curFragment, onlinePageFg);
-                break;
-            case R.id.local_bottom_ll:
-                switchContent(curFragment, localFg);
-                break;
-            case R.id.user_bottom_ll:
-                switchContent(curFragment, userFg);
-                break;
-            case R.id.recommend_bottom_ll:
-                switchContent(curFragment, mRecommendFragment);
-                break;
+
+    }
+
+    /*
+ setOffscreenPageLimit对此无用,全都在内存里
+ FragmentPagerAdapter 继承自 PagerAdapter。相比通用的 PagerAdapter，该类更专注于每一页均为 Fragment
+  的情况。如文档所述，<b>该类内的每一个生成的 Fragment 都将保存在内存之中，因此适用于那些相对静态的页</b>，数量也比
+  较少的那种；如果需要处理有很多页，并且数据动态性较大、占用内存较多的情况，应该使用
+  FragmentStatePagerAdapter。FragmentPagerAdapter 重载实现了几个必须的函数，因此来自 PagerAdapter
+  的函数，我们只需要实现 getCount()，即可。且，由于 FragmentPagerAdapter.instantiateItem() 的实现中，
+  调用了一个新增的虚函数 getItem()，因此，我们还至少需要实现一个 getItem()。因此，总体上来说，相对于继承自
+  PagerAdapter，更方便一些。*/
+    private class MyFragmentPagerAdapter extends FragmentPagerAdapter {
+        private String[] titleList = {"测试1", "测试2"};
+
+        public MyFragmentPagerAdapter(FragmentManager fm) {
+            super(fm);
         }
-    }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        // Forward results to EasyPermissions
-        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
-    }
+        @Override
+        public android.support.v4.app.Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    return mFragment;
+                case 1:
+                    return mFragment1;
+                default:
+                    return mFragment;
+            }
+        }
 
-    @Override
-    public void onPermissionsGranted(int requestCode, List<String> perms) {
-        baseToast.showToast("已获得授权,请继续!");
-    }
 
-    @Override
-    public void onPermissionsDenied(int requestCode, List<String> perms) {
-        if (Configure.PERMISSION_FILE_REQUST_CODE == requestCode) {
-            MangaDialog peanutDialog = new MangaDialog(MainActivity.this);
-            peanutDialog.show();
-            peanutDialog.setTitle("没有文件读写权限,无法下载二维码!可以授权后重试.");
+        @Override
+        public int getCount() {
+            return 2;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return titleList[position];
         }
     }
 }

@@ -53,7 +53,7 @@ public class ToggleTag extends LinearLayout {
             tagTv.setTextColor(context.getResources().getColor(R.color.divide));
             toggleTagLl.setBackgroundResource(R.drawable.tag_toggle_btn_style_checked);
         } else {
-            tagTv.setTextColor(context.getResources().getColor(R.color.manga_reader));
+            tagTv.setTextColor(context.getResources().getColor(R.color.fragmented_time));
             toggleTagLl.setBackgroundResource(R.drawable.tag_toggle_btn_style);
         }
     }

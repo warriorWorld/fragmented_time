@@ -41,7 +41,7 @@
         android:paddingLeft="17dp"
         android:paddingRight="17dp"
         android:text="message"
-        android:textColor="@color/manga_reader_blue"
+        android:textColor="@color/fragmented_time_blue"
         android:textSize="14sp"
         android:visibility="gone" />
 
@@ -95,7 +95,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="确定"
-            android:textColor="@color/manga_reader"
+            android:textColor="@color/fragmented_time"
             android:textSize="18sp" />
     </LinearLayout>
 </LinearLayout>

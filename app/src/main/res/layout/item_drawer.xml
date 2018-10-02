@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/item_drawer_rl"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:background="@drawable/seven_fourteen_default_click"
+                android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/drawer_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:text="--"
+        android:textColor="@color/main_text_color"
+        android:textSize="16sp"/>
+
+    <ImageView
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="27dp"
+        android:src="@drawable/forward"/>
+</RelativeLayout>

@@ -5,7 +5,7 @@
     android:id="@+id/item_grade_rl"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/manga_reader">
+    android:background="@color/fragmented_time">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
             android:gravity="left"
             android:singleLine="true"
             android:text="user name"
-            android:textColor="@color/manga_reader"
+            android:textColor="@color/fragmented_time"
             android:textSize="15sp" />
 
         <com.truthower.suhang.fragmentedtime.widget.layout.StarLinearlayout

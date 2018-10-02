@@ -27,7 +27,7 @@
             android:gravity="left"
             android:singleLine="true"
             android:text="https://www.buzzingandroid.com/tools/android-layout-finder/"
-            android:textColor="@color/manga_reader"
+            android:textColor="@color/fragmented_time"
             android:textSize="18sp" />
 
         <TextView

@@ -14,7 +14,7 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:text="努力更新中..."
-        android:textColor="@color/manga_reader"
+        android:textColor="@color/fragmented_time"
         android:textSize="@dimen/main_text_size"
         android:visibility="visible" />
 
@@ -58,7 +58,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="知道了"
-            android:textColor="@color/manga_reader"
+            android:textColor="@color/fragmented_time"
             android:textSize="18sp"
             android:visibility="gone" />
     </LinearLayout>

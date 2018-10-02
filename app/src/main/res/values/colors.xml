@@ -5,9 +5,9 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <!--主流的几个颜色-->
-    <color name="manga_reader">#e66c25</color>
-    <color name="manga_reader_deep">#e9193b</color>
-    <color name="manga_reader_blue">#456ec1</color>
+    <color name="fragmented_time">#e4d20f</color>
+    <color name="fragmented_time_deep">#e9193b</color>
+    <color name="fragmented_time_blue">#456ec1</color>
     <color name="white">#ffffff</color>
     <color name="main_text_color">#444444</color>
     <color name="main_text_color_gray">#c2c2c2</color>

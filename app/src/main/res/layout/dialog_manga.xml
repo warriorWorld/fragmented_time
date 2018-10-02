@@ -70,7 +70,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="知道了"
-            android:textColor="@color/manga_reader"
+            android:textColor="@color/fragmented_time"
             android:textSize="17sp"/>
     </LinearLayout>
 </LinearLayout>

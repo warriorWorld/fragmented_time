@@ -2,12 +2,8 @@ package com.truthower.suhang.fragmentedtime.bean;/**
  * Created by Administrator on 2016/11/2.
  */
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
 
-import com.truthower.suhang.fragmentedtime.business.user.LoginActivity;
 import com.truthower.suhang.fragmentedtime.config.ShareKeys;
 import com.truthower.suhang.fragmentedtime.utils.ShareObjUtil;
 
@@ -78,14 +74,14 @@ public class LoginBean extends BaseBean {
         return userName;
     }
 
-    public String getUserName(Activity context) {
-        if (TextUtils.isEmpty(userName)) {
-            Intent intent = new Intent(context, LoginActivity.class);
-            context.startActivity(intent);
-            return "";
-        }
-        return userName;
-    }
+//    public String getUserName(Activity context) {
+//        if (TextUtils.isEmpty(userName)) {
+//            Intent intent = new Intent(context, LoginActivity.class);
+//            context.startActivity(intent);
+//            return "";
+//        }
+//        return userName;
+//    }
 
 
     public String getEmail() {

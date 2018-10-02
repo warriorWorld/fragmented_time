@@ -56,9 +56,9 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             final CommentBean item = datas.get(position);
             ((NormalViewHolder) viewHolder).userNameTv.setText(item.getOwner());
             if (item.getOwner().equals("智障的我")) {
-                ((NormalViewHolder) viewHolder).userNameTv.setTextColor(context.getResources().getColor(R.color.manga_reader_deep));
+                ((NormalViewHolder) viewHolder).userNameTv.setTextColor(context.getResources().getColor(R.color.fragmented_time_deep));
             } else {
-                ((NormalViewHolder) viewHolder).userNameTv.setTextColor(context.getResources().getColor(R.color.manga_reader));
+                ((NormalViewHolder) viewHolder).userNameTv.setTextColor(context.getResources().getColor(R.color.fragmented_time));
             }
             ((NormalViewHolder) viewHolder).userNameTv.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -70,13 +70,13 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             });
             ((NormalViewHolder) viewHolder).commentContentTv.setText(item.getComment_content());
             if (item.isHot()) {
-                ((NormalViewHolder) viewHolder).commentContentTv.setTextColor(context.getResources().getColor(R.color.manga_reader));
+                ((NormalViewHolder) viewHolder).commentContentTv.setTextColor(context.getResources().getColor(R.color.fragmented_time));
             } else {
                 ((NormalViewHolder) viewHolder).commentContentTv.setTextColor(context.getResources().getColor(R.color.main_text_color));
             }
             ((NormalViewHolder) viewHolder).commentDateTv.setText(WeekUtil.getDateDetailStringWithDate(item.getCreate_at()));
             if (isUserCenter) {
-                ((NormalViewHolder) viewHolder).replyTv.setTextColor(context.getResources().getColor(R.color.manga_reader));
+                ((NormalViewHolder) viewHolder).replyTv.setTextColor(context.getResources().getColor(R.color.fragmented_time));
                 ((NormalViewHolder) viewHolder).replyTv.setText(item.getMangaName());
             } else {
                 ((NormalViewHolder) viewHolder).replyTv.setTextColor(context.getResources().getColor(R.color.main_text_color));

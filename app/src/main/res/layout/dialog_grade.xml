@@ -13,7 +13,7 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:text="评分"
-        android:textColor="@color/manga_reader"
+        android:textColor="@color/fragmented_time"
         android:textSize="17sp"
         android:visibility="visible" />
 
@@ -74,7 +74,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="提交"
-            android:textColor="@color/manga_reader"
+            android:textColor="@color/fragmented_time"
             android:textSize="17sp" />
     </LinearLayout>
 </LinearLayout>
