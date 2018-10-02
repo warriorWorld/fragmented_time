@@ -76,62 +76,6 @@ public class BaseParameterUtil {
         return device;
     }
 
-    public String getCurrentWebSite(Context context) {
-        String website = SharedPreferencesUtils.getSharedPreferencesData(context,
-                ShareKeys.CURRENT_WEBSITE);
-        if (TextUtils.isEmpty(website)) {
-            website = Configure.websList[0];
-            SharedPreferencesUtils.setSharedPreferencesData(context, ShareKeys.CURRENT_WEBSITE,
-                    website);
-        }
-        return website;
-    }
-
-    public void saveCurrentWebSite(Context context, String website) {
-        SharedPreferencesUtils.setSharedPreferencesData(context, ShareKeys.CURRENT_WEBSITE,
-                website);
-    }
-
-    public String getCurrentType(Context context) {
-        String res = SharedPreferencesUtils.getSharedPreferencesData(context,
-                ShareKeys.CURRENT_TYPE);
-        if (TextUtils.isEmpty(res)) {
-            res = "all";
-            SharedPreferencesUtils.setSharedPreferencesData(context, ShareKeys.CURRENT_TYPE,
-                    res);
-        }
-        return res;
-    }
-
-    public void saveCurrentType(Context context, String string) {
-        SharedPreferencesUtils.setSharedPreferencesData(context, ShareKeys.CURRENT_TYPE,
-                string);
-    }
-
-    public int getCurrentPage(Context context) {
-        int res = SharedPreferencesUtils.getIntSharedPreferencesData(context,
-                ShareKeys.CURRENT_PAGE,1);
-        return res;
-    }
-
-    public void saveCurrentPage(Context context, int res) {
-        SharedPreferencesUtils.setSharedPreferencesData(context, ShareKeys.CURRENT_PAGE,
-                res);
-    }
-//    public String getDeviceToken() {
-//        String deviceToken = SharedPreferencesUtils.getSharedPreferencesData(context,
-//                ShareKeys.DEVICE_TOKEN_KEY);
-//        if (TextUtils.isEmpty(deviceToken)) {
-//            deviceToken = PushAgent.getInstance(context).getRegistrationId();
-//            if (TextUtils.isEmpty(deviceToken)) {
-//                return EMPTY;
-//            }
-//            SharedPreferencesUtils.setSharedPreferencesData(context, ShareKeys.DEVICE_TOKEN_KEY,
-//                    deviceToken);
-//        }
-//        return deviceToken;
-//    }
-
     public void saveDeviceToken(Context context, String token) {
         SharedPreferencesUtils.setSharedPreferencesData(context, ShareKeys.DEVICE_TOKEN_KEY,
                 token);

@@ -60,8 +60,8 @@ public abstract class BaseRefreshFragment extends BaseFragment implements View.O
         // 设置下拉进度的背景颜色，默认就是白色的
         baseSwipeLayout.setProgressBackgroundColorSchemeResource(android.R.color.white);
         // 设置下拉进度的主题颜色
-        baseSwipeLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary, R.color.colorPrimaryDark);
-
+//        baseSwipeLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary, R.color.colorPrimaryDark);
+        baseSwipeLayout.setColorSchemeResources(R.color.fragmented_time);
         // 下拉时触发SwipeRefreshLayout的下拉动画，动画完毕之后就会回调这个方法
         baseSwipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

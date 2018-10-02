@@ -8,11 +8,13 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.truthower.suhang.fragmentedtime.R;
 import com.truthower.suhang.fragmentedtime.base.BaseActivity;
 import com.truthower.suhang.fragmentedtime.base.BaseFragment;
+import com.truthower.suhang.fragmentedtime.business.ninegag.NineGagFragment;
 import com.truthower.suhang.fragmentedtime.business.web.WebFragment;
 import com.truthower.suhang.fragmentedtime.utils.ActivityPoor;
 import com.truthower.suhang.fragmentedtime.utils.DisplayUtil;
@@ -20,21 +22,23 @@ import com.truthower.suhang.fragmentedtime.widget.bar.TopBar;
 import com.truthower.suhang.fragmentedtime.widget.viewgroup.MainNavigationView;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
-    private WebFragment mFragment, mFragment1;
-    private DrawerLayout drawer,rightDrawer;
+    private NineGagFragment mNineGagFragment;
+    private WebFragment mFragment;
+    private DrawerLayout drawer, rightDrawer;
     private MainNavigationView navigationView, rightNavigationView;
     private View appBarMain;
     private TabLayout tabLayout;
     private ViewPager vp;
     private MyFragmentPagerAdapter adapter;
     private int navWidth;
+    private ImageView leftNavIv;
+    private ImageView rightNavIv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mFragment = new WebFragment();
         mFragment.setUrl("https://9gag.com/");
-        mFragment1 = new WebFragment();
-        mFragment1.setUrl("http://jandan.net/");
+        mNineGagFragment=new NineGagFragment();
         navWidth = DisplayUtil.dip2px(this, 218);
         super.onCreate(savedInstanceState);
     }
@@ -48,8 +52,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         vp.setAdapter(adapter = new MyFragmentPagerAdapter(this.getSupportFragmentManager()));
         vp.setOffscreenPageLimit(1);
         tabLayout.setupWithViewPager(vp);
+        leftNavIv = (ImageView) findViewById(R.id.left_nav_iv);
+        rightNavIv = (ImageView) findViewById(R.id.right_nav_iv);
 
-
+        leftNavIv.setOnClickListener(this);
+        rightNavIv.setOnClickListener(this);
         navigationView = (MainNavigationView) findViewById(R.id.nav_view);
         rightNavigationView = (MainNavigationView) findViewById(R.id.right_nav_view);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -57,7 +64,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 //slideOffset是个从0-1的值
-                switch (drawerView.getId()){
+                switch (drawerView.getId()) {
                     case R.id.nav_view:
                         appBarMain.setTranslationX(slideOffset * navWidth);
                         break;
@@ -113,7 +120,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.left_nav_iv:
+                drawer.openDrawer(GravityCompat.START);
+                break;
+            case R.id.right_nav_iv:
+                drawer.openDrawer(GravityCompat.END);
+                break;
+        }
     }
 
     /*
@@ -126,7 +140,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
   调用了一个新增的虚函数 getItem()，因此，我们还至少需要实现一个 getItem()。因此，总体上来说，相对于继承自
   PagerAdapter，更方便一些。*/
     private class MyFragmentPagerAdapter extends FragmentPagerAdapter {
-        private String[] titleList = {"测试1", "测试2"};
+        private String[] titleList = {"9gag", "测试2"};
 
         public MyFragmentPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -136,9 +150,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         public android.support.v4.app.Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return mFragment;
+                    return mNineGagFragment;
                 case 1:
-                    return mFragment1;
+                    return mFragment;
                 default:
                     return mFragment;
             }
