@@ -1,27 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tab_layout"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-        android:background="@color/white"
-        app:tabGravity="fill"
-        app:tabIndicatorColor="@color/fragmented_time"
-        app:tabIndicatorHeight="3dp"
-        app:tabMode="fixed"
-        app:tabSelectedTextColor="@color/fragmented_time"
-        app:tabTextColor="@color/main_text_color_gray"/>
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/left_nav_iv"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/main_nav_icon"/>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/right_nav_iv"
+            android:layout_toRightOf="@+id/left_nav_iv"
+            android:background="@color/white"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/fragmented_time"
+            app:tabIndicatorHeight="3dp"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/fragmented_time"
+            app:tabTextColor="@color/main_text_color_gray"/>
+
+        <ImageView
+            android:id="@+id/right_nav_iv"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/main_nav_icon"/>
+    </RelativeLayout>
 
     <View
-        android:id="@+id/divide_line_v"
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:layout_below="@+id/tab_layout"
         android:background="@color/divide_line"></View>
 
     <android.support.v4.view.ViewPager
@@ -29,4 +52,4 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/divide_line_v"></android.support.v4.view.ViewPager>
-</RelativeLayout>
+</LinearLayout>

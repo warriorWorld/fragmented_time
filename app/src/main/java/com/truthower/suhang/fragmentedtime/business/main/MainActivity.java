@@ -15,12 +15,13 @@ import com.truthower.suhang.fragmentedtime.base.BaseActivity;
 import com.truthower.suhang.fragmentedtime.base.BaseFragment;
 import com.truthower.suhang.fragmentedtime.utils.ActivityPoor;
 import com.truthower.suhang.fragmentedtime.utils.DisplayUtil;
+import com.truthower.suhang.fragmentedtime.widget.bar.TopBar;
 import com.truthower.suhang.fragmentedtime.widget.viewgroup.MainNavigationView;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
     private BaseFragment mFragment, mFragment1;
-    private DrawerLayout drawer;
-    private MainNavigationView navigationView;
+    private DrawerLayout drawer,rightDrawer;
+    private MainNavigationView navigationView, rightNavigationView;
     private View appBarMain;
     private TabLayout tabLayout;
     private ViewPager vp;
@@ -47,12 +48,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
         navigationView = (MainNavigationView) findViewById(R.id.nav_view);
+        rightNavigationView = (MainNavigationView) findViewById(R.id.right_nav_view);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.setDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 //slideOffset是个从0-1的值
-                appBarMain.setTranslationX(slideOffset * navWidth);
+                switch (drawerView.getId()){
+                    case R.id.nav_view:
+                        appBarMain.setTranslationX(slideOffset * navWidth);
+                        break;
+                    case R.id.right_nav_view:
+                        appBarMain.setTranslationX(-slideOffset * navWidth);
+                        break;
+                }
+
             }
 
             @Override

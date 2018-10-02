@@ -7,11 +7,11 @@
                                         android:layout_height="match_parent"
                                         tools:openDrawer="start">
 
-        <include
-            android:id="@+id/app_bar_main"
-            layout="@layout/app_bar_main"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+    <include
+        android:id="@+id/app_bar_main"
+        layout="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 
     <com.truthower.suhang.fragmentedtime.widget.viewgroup.MainNavigationView
@@ -19,5 +19,12 @@
         android:layout_width="218dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:fitsSystemWindows="true"/>
+
+    <com.truthower.suhang.fragmentedtime.widget.viewgroup.MainNavigationView
+        android:id="@+id/right_nav_view"
+        android:layout_width="218dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
         android:fitsSystemWindows="true"/>
 </android.support.v4.widget.DrawerLayout>
