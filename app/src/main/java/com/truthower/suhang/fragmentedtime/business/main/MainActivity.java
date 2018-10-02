@@ -13,13 +13,14 @@ import android.widget.Toast;
 import com.truthower.suhang.fragmentedtime.R;
 import com.truthower.suhang.fragmentedtime.base.BaseActivity;
 import com.truthower.suhang.fragmentedtime.base.BaseFragment;
+import com.truthower.suhang.fragmentedtime.business.web.WebFragment;
 import com.truthower.suhang.fragmentedtime.utils.ActivityPoor;
 import com.truthower.suhang.fragmentedtime.utils.DisplayUtil;
 import com.truthower.suhang.fragmentedtime.widget.bar.TopBar;
 import com.truthower.suhang.fragmentedtime.widget.viewgroup.MainNavigationView;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
-    private BaseFragment mFragment, mFragment1;
+    private WebFragment mFragment, mFragment1;
     private DrawerLayout drawer,rightDrawer;
     private MainNavigationView navigationView, rightNavigationView;
     private View appBarMain;
@@ -30,8 +31,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mFragment = new BaseFragment();
-        mFragment1 = new BaseFragment();
+        mFragment = new WebFragment();
+        mFragment.setUrl("https://9gag.com/");
+        mFragment1 = new WebFragment();
+        mFragment1.setUrl("http://jandan.net/");
         navWidth = DisplayUtil.dip2px(this, 218);
         super.onCreate(savedInstanceState);
     }
